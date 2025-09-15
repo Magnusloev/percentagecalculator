@@ -20,47 +20,86 @@ h1 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 30px;
+    font-weight: normal;
 }
 
 .calculator {
     background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     margin-bottom: 30px;
 }
 
 .calc-row {
-    margin-bottom: 20px;
-    padding: 20px;
-    background: #f8f9fa;
-    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 15px 18px;
+    background: #fafafa;
+    border-radius: 6px;
+    border: 1px solid #e8e8e8;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.calc-row p {
+    margin: 0;
+    font-size: 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 input {
-    padding: 8px 12px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 80px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    width: 70px;
     text-align: center;
+    background: white;
+    transition: border-color 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #666;
+    box-shadow: 0 0 0 2px rgba(102, 102, 102, 0.1);
 }
 
 button {
-    background: #007bff;
+    background: #555;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 6px 14px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 13px;
+    font-weight: normal;
+    transition: background-color 0.2s ease;
+    margin-left: 10px;
+}
+
+button:hover {
+    background: #444;
+}
+
+button:active {
+    background: #333;
 }
 
 .result {
-    margin-top: 10px;
-    font-weight: bold;
-    color: #28a745;
-    font-size: 1.2rem;
+    margin-left: 10px;
+    font-weight: 600;
+    color: #2c5530;
+    font-size: 15px;
+    background: #f0f8f0;
+    padding: 4px 8px;
+    border-radius: 3px;
+    border: 1px solid #d4edda;
 }
 
 /* Side Banner Styles */
@@ -120,42 +159,46 @@ button {
 /* FAQ Section */
 .faq-section {
     background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     margin-bottom: 30px;
 }
 
 .faq-section h2 {
     color: #333;
     margin-bottom: 20px;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    font-weight: normal;
 }
 
 .faq-section h3 {
     color: #555;
-    margin: 20px 0 10px 0;
-    font-size: 1.2rem;
+    margin: 18px 0 8px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .faq-section p {
     color: #666;
-    line-height: 1.6;
-    margin-bottom: 15px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    font-size: 14px;
 }
 
 .example-box {
-    background: #f0f8ff;
-    padding: 15px;
-    border-radius: 8px;
-    border-left: 4px solid #007bff;
-    margin: 10px 0;
-    font-family: monospace;
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 4px;
+    border-left: 3px solid #666;
+    margin: 8px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #444;
 }
 
 /* Responsive Design */
 @media (max-width: 1200px) {
-    /* Hide side banners on smaller screens */
     .side-banner {
         display: none;
     }
@@ -163,20 +206,46 @@ button {
 
 @media (max-width: 600px) {
     body {
-        padding: 10px;
+        padding: 15px;
     }
     
     h1 {
         font-size: 2rem;
     }
     
+    .calculator {
+        padding: 20px;
+    }
+    
     .calc-row {
-        padding: 15px;
+        padding: 12px 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .calc-row p {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
     }
     
     input {
-        width: 70px;
-        font-size: 14px;
+        width: 80px;
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    button {
+        margin-left: 0;
+        width: 100%;
+        padding: 8px;
+    }
+    
+    .result {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
     }
     
     .ad-banner-large {
@@ -215,25 +284,25 @@ button {
         <div class="calc-row">
             <p>What is <input type="number" id="percent1" placeholder="15"> % of <input type="number" id="number1" placeholder="100"> ?</p>
             <button onclick="calculate1()">Calculate</button>
-            <div class="result" id="result1"></div>
+            <div class="result" id="result1" style="display: none;"></div>
         </div>
         
         <div class="calc-row">
             <p><input type="number" id="number2" placeholder="25"> is what percent of <input type="number" id="total2" placeholder="100"> ?</p>
             <button onclick="calculate2()">Calculate</button>
-            <div class="result" id="result2"></div>
+            <div class="result" id="result2" style="display: none;"></div>
         </div>
         
         <div class="calc-row">
             <p>Percentage change from <input type="number" id="old" placeholder="100"> to <input type="number" id="new" placeholder="125"></p>
             <button onclick="calculate3()">Calculate</button>
-            <div class="result" id="result3"></div>
+            <div class="result" id="result3" style="display: none;"></div>
         </div>
         
         <div class="calc-row">
             <p><input type="number" id="number3" placeholder="50"> is <input type="number" id="percent3" placeholder="25"> % of what?</p>
             <button onclick="calculate4()">Calculate</button>
-            <div class="result" id="result4"></div>
+            <div class="result" id="result4" style="display: none;"></div>
         </div>
     </div>
     
@@ -298,12 +367,18 @@ button {
     </div>
 
     <script>
+function showResult(elementId, text) {
+    const resultElement = document.getElementById(elementId);
+    resultElement.textContent = text;
+    resultElement.style.display = 'inline-block';
+}
+
 function calculate1() {
     const percent = parseFloat(document.getElementById('percent1').value);
     const number = parseFloat(document.getElementById('number1').value);
     if (!isNaN(percent) && !isNaN(number)) {
         const result = (percent / 100) * number;
-        document.getElementById('result1').textContent = '= ' + result;
+        showResult('result1', '= ' + result);
     }
 }
 
@@ -312,7 +387,7 @@ function calculate2() {
     const total = parseFloat(document.getElementById('total2').value);
     if (!isNaN(number) && !isNaN(total) && total !== 0) {
         const result = (number / total) * 100;
-        document.getElementById('result2').textContent = '= ' + result.toFixed(2) + '%';
+        showResult('result2', '= ' + result.toFixed(2) + '%');
     }
 }
 
@@ -322,7 +397,7 @@ function calculate3() {
     if (!isNaN(oldValue) && !isNaN(newValue) && oldValue !== 0) {
         const change = ((newValue - oldValue) / oldValue) * 100;
         const direction = change >= 0 ? 'increase' : 'decrease';
-        document.getElementById('result3').textContent = '= ' + Math.abs(change).toFixed(2) + '% ' + direction;
+        showResult('result3', '= ' + Math.abs(change).toFixed(2) + '% ' + direction);
     }
 }
 
@@ -331,9 +406,18 @@ function calculate4() {
     const percent = parseFloat(document.getElementById('percent3').value);
     if (!isNaN(number) && !isNaN(percent) && percent !== 0) {
         const result = (number * 100) / percent;
-        document.getElementById('result4').textContent = '= ' + result.toFixed(2);
+        showResult('result4', '= ' + result.toFixed(2));
     }
 }
+
+// Hide results when inputs change
+document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('input', function() {
+        const parent = this.closest('.calc-row');
+        const result = parent.querySelector('.result');
+        result.style.display = 'none';
+    });
+});
     </script>
 </body>
 </html>
