@@ -61,10 +61,80 @@ button {
     color: #28a745;
     font-size: 1.2rem;
 }
+
+/* Ad Banner Styles */
+.ad-banner {
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 10px;
+    text-align: center;
+    margin: 30px 0;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.ad-banner-large {
+    padding: 50px 20px;
+    font-size: 16px;
+}
+
+.ad-banner-small {
+    padding: 40px 20px;
+}
+
+/* FAQ Section */
+.faq-section {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+}
+
+.faq-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.faq-section h3 {
+    color: #555;
+    margin: 20px 0 10px 0;
+    font-size: 1.2rem;
+}
+
+.faq-section p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .calc-row {
+        padding: 15px;
+    }
+    
+    input {
+        width: 70px;
+        font-size: 14px;
+    }
+    
+    .ad-banner-large {
+        padding: 30px 15px;
+    }
+}
     </style>
 </head>
 <body>
     <h1>Percentage Calculator</h1>
+    
+    <!-- Top Ad Banner -->
+    <div class="ad-banner ad-banner-large">
+        <strong>Advertisement</strong><br>
+        728x90 Leaderboard Banner<br>
+        <small>Replace this with your ad code</small>
+    </div>
     
     <div class="calculator">
         <div class="calc-row">
@@ -78,6 +148,51 @@ button {
             <button onclick="calculate2()">Calculate</button>
             <div class="result" id="result2"></div>
         </div>
+        
+        <div class="calc-row">
+            <p>Percentage change from <input type="number" id="old" placeholder="100"> to <input type="number" id="new" placeholder="125"></p>
+            <button onclick="calculate3()">Calculate</button>
+            <div class="result" id="result3"></div>
+        </div>
+        
+        <div class="calc-row">
+            <p><input type="number" id="number3" placeholder="50"> is <input type="number" id="percent3" placeholder="25"> % of what?</p>
+            <button onclick="calculate4()">Calculate</button>
+            <div class="result" id="result4"></div>
+        </div>
+    </div>
+    
+    <!-- Middle Ad Banner -->
+    <div class="ad-banner ad-banner-small">
+        <strong>Advertisement</strong><br>
+        300x250 Rectangle Banner
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        
+        <h3>How do I use this percentage calculator?</h3>
+        <p>Simply enter your numbers in the appropriate fields and click "Calculate". The calculator will instantly show you the result.</p>
+        
+        <h3>What types of percentage calculations can I do?</h3>
+        <p><strong>Basic percentage:</strong> Find what 15% of 200 is (answer: 30)<br>
+        <strong>Percentage of total:</strong> Find what percentage 30 is of 200 (answer: 15%)<br>
+        <strong>Percentage change:</strong> Calculate increase/decrease between two numbers<br>
+        <strong>Reverse percentage:</strong> If 30 is 15% of something, what's the total? (answer: 200)</p>
+        
+        <h3>Is this calculator accurate?</h3>
+        <p>Yes! Our calculator uses standard mathematical formulas to ensure 100% accurate results for all percentage calculations.</p>
+        
+        <h3>Can I use this on my mobile phone?</h3>
+        <p>Absolutely! This calculator is fully responsive and works perfectly on smartphones, tablets, and desktop computers.</p>
+    </div>
+    
+    <!-- Bottom Ad Banner -->
+    <div class="ad-banner ad-banner-large">
+        <strong>Advertisement</strong><br>
+        728x90 Footer Banner<br>
+        <small>Perfect for Google AdSense</small>
     </div>
 
     <script>
@@ -96,6 +211,25 @@ function calculate2() {
     if (!isNaN(number) && !isNaN(total) && total !== 0) {
         const result = (number / total) * 100;
         document.getElementById('result2').textContent = '= ' + result.toFixed(2) + '%';
+    }
+}
+
+function calculate3() {
+    const oldValue = parseFloat(document.getElementById('old').value);
+    const newValue = parseFloat(document.getElementById('new').value);
+    if (!isNaN(oldValue) && !isNaN(newValue) && oldValue !== 0) {
+        const change = ((newValue - oldValue) / oldValue) * 100;
+        const direction = change >= 0 ? 'increase' : 'decrease';
+        document.getElementById('result3').textContent = '= ' + Math.abs(change).toFixed(2) + '% ' + direction;
+    }
+}
+
+function calculate4() {
+    const number = parseFloat(document.getElementById('number3').value);
+    const percent = parseFloat(document.getElementById('percent3').value);
+    if (!isNaN(number) && !isNaN(percent) && percent !== 0) {
+        const result = (number * 100) / percent;
+        document.getElementById('result4').textContent = '= ' + result.toFixed(2);
     }
 }
     </script>
