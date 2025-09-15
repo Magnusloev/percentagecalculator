@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.calculator {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+}
+
+.calc-row {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+input {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 80px;
+    text-align: center;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.result {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #28a745;
+    font-size: 1.2rem;
+}
+    </style>
+</head>
+<body>
+    <h1>Percentage Calculator</h1>
+    
+    <div class="calculator">
+        <div class="calc-row">
+            <p>What is <input type="number" id="percent1" placeholder="15"> % of <input type="number" id="number1" placeholder="100"> ?</p>
+            <button onclick="calculate1()">Calculate</button>
+            <div class="result" id="result1"></div>
+        </div>
+        
+        <div class="calc-row">
+            <p><input type="number" id="number2" placeholder="25"> is what percent of <input type="number" id="total2" placeholder="100"> ?</p>
+            <button onclick="calculate2()">Calculate</button>
+            <div class="result" id="result2"></div>
+        </div>
+    </div>
+
+    <script>
+function calculate1() {
+    const percent = parseFloat(document.getElementById('percent1').value);
+    const number = parseFloat(document.getElementById('number1').value);
+    if (!isNaN(percent) && !isNaN(number)) {
+        const result = (percent / 100) * number;
+        document.getElementById('result1').textContent = '= ' + result;
+    }
+}
+
+function calculate2() {
+    const number = parseFloat(document.getElementById('number2').value);
+    const total = parseFloat(document.getElementById('total2').value);
+    if (!isNaN(number) && !isNaN(total) && total !== 0) {
+        const result = (number / total) * 100;
+        document.getElementById('result2').textContent = '= ' + result.toFixed(2) + '%';
+    }
+}
+    </script>
+</body>
+</html>
