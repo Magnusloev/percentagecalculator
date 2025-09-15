@@ -12,6 +12,7 @@ body {
     padding: 20px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
+    position: relative;
 }
 
 h1 {
@@ -62,7 +63,41 @@ button {
     font-size: 1.2rem;
 }
 
-/* Ad Banner Styles */
+/* Side Banner Styles */
+.side-banner {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    height: 600px;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #6c757d;
+    font-size: 14px;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.side-banner-left {
+    left: 20px;
+}
+
+.side-banner-right {
+    right: 20px;
+}
+
+.side-banner strong {
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Regular Ad Banner Styles */
 .ad-banner {
     background: #f8f9fa;
     border: 2px dashed #dee2e6;
@@ -109,8 +144,32 @@ button {
     margin-bottom: 15px;
 }
 
-/* Mobile responsive */
+.example-box {
+    background: #f0f8ff;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+    margin: 10px 0;
+    font-family: monospace;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    /* Hide side banners on smaller screens */
+    .side-banner {
+        display: none;
+    }
+}
+
 @media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
     .calc-row {
         padding: 15px;
     }
@@ -127,6 +186,22 @@ button {
     </style>
 </head>
 <body>
+    <!-- Left Side Banner -->
+    <div class="side-banner side-banner-left">
+        <strong>Advertisement</strong>
+        160x600<br>
+        Wide Skyscraper<br>
+        <small>Left Side Banner</small>
+    </div>
+    
+    <!-- Right Side Banner -->
+    <div class="side-banner side-banner-right">
+        <strong>Advertisement</strong>
+        160x600<br>
+        Wide Skyscraper<br>
+        <small>Right Side Banner</small>
+    </div>
+
     <h1>Percentage Calculator</h1>
     
     <!-- Top Ad Banner -->
@@ -170,22 +245,49 @@ button {
 
     <!-- FAQ Section -->
     <div class="faq-section">
-        <h2>Frequently Asked Questions</h2>
+        <h2>Understanding Percentages</h2>
         
-        <h3>How do I use this percentage calculator?</h3>
-        <p>Simply enter your numbers in the appropriate fields and click "Calculate". The calculator will instantly show you the result.</p>
+        <h3>What is a percentage?</h3>
+        <p>A percentage is a way of expressing a number as a fraction of 100. The word "percent" comes from the Latin "per centum," meaning "per hundred." It's denoted by the symbol "%".</p>
+        <div class="example-box">Example: 25% = 25/100 = 0.25</div>
         
-        <h3>What types of percentage calculations can I do?</h3>
-        <p><strong>Basic percentage:</strong> Find what 15% of 200 is (answer: 30)<br>
-        <strong>Percentage of total:</strong> Find what percentage 30 is of 200 (answer: 15%)<br>
-        <strong>Percentage change:</strong> Calculate increase/decrease between two numbers<br>
-        <strong>Reverse percentage:</strong> If 30 is 15% of something, what's the total? (answer: 200)</p>
+        <h3>How do you convert between percentages, decimals, and fractions?</h3>
+        <p><strong>Percentage to decimal:</strong> Divide by 100 (or move decimal point 2 places left)<br>
+        <strong>Decimal to percentage:</strong> Multiply by 100 (or move decimal point 2 places right)<br>
+        <strong>Percentage to fraction:</strong> Put the percentage over 100 and simplify</p>
+        <div class="example-box">
+        75% = 75/100 = 0.75 = 3/4<br>
+        0.6 = 60% = 60/100 = 3/5
+        </div>
         
-        <h3>Is this calculator accurate?</h3>
-        <p>Yes! Our calculator uses standard mathematical formulas to ensure 100% accurate results for all percentage calculations.</p>
+        <h3>What are some common percentage calculations in daily life?</h3>
+        <p><strong>Sales tax:</strong> If sales tax is 8.5%, and you buy something for $50, the tax is $4.25<br>
+        <strong>Tips:</strong> A 20% tip on a $30 meal is $6<br>
+        <strong>Discounts:</strong> A 30% discount on a $80 item saves you $24<br>
+        <strong>Interest rates:</strong> 5% annual interest on $1000 is $50 per year</p>
         
-        <h3>Can I use this on my mobile phone?</h3>
-        <p>Absolutely! This calculator is fully responsive and works perfectly on smartphones, tablets, and desktop computers.</p>
+        <h3>How do you calculate percentage increase and decrease?</h3>
+        <p>Formula: ((New Value - Old Value) / Old Value) × 100</p>
+        <div class="example-box">
+        Price went from $100 to $120:<br>
+        Increase = ((120 - 100) / 100) × 100 = 20%<br><br>
+        Price dropped from $200 to $150:<br>
+        Decrease = ((150 - 200) / 200) × 100 = -25%
+        </div>
+        
+        <h3>What's the difference between percentage points and percent?</h3>
+        <p><strong>Percentage points</strong> refer to the arithmetic difference between percentages. If unemployment rises from 5% to 7%, that's an increase of 2 percentage points, but a 40% relative increase.</p>
+        <div class="example-box">
+        Interest rate: 3% → 5%<br>
+        Percentage point increase: 2 points<br>
+        Percent increase: 66.7%
+        </div>
+        
+        <h3>How are percentages used in finance and business?</h3>
+        <p><strong>Profit margins:</strong> (Revenue - Costs) / Revenue × 100<br>
+        <strong>Growth rates:</strong> Year-over-year percentage changes<br>
+        <strong>Return on investment (ROI):</strong> (Gain - Cost) / Cost × 100<br>
+        <strong>Market share:</strong> Company sales / Total market sales × 100</p>
     </div>
     
     <!-- Bottom Ad Banner -->
